@@ -2,17 +2,36 @@ const valorInput = document.querySelector('.form-input')
 const sessaoResultado = document.querySelector('.resultado')
 const btnSalvar = document.getElementById('btn-save')
 const ApagarTodos = document.getElementById('btn')
-
-const totalAnt = document.getElementById('total') 
+const divBox = document.querySelector('.input-box')
+const totalAnt = document.getElementById('total')
 
 let arrayAnotacao = []
 
+
+eventos();
+function eventos() {
+    btnSalvar.addEventListener('click', addAnotacao)
+    sessaoResultado.addEventListener('click', removerAnt)
+    btn.addEventListener('click', deletarTodos)
+}
+
 function addAnotacao() {
     let anotacao = valorInput.value
-    totalAnt.style.display = 'block'
-    ApagarTodos.style.display = 'block'
+
     if (anotacao === '') {
-        alert('O input está vazio')
+        valorInput.classList.add('alerta')
+        const p = document.createElement('p')
+        p.classList.add('texto-error')
+
+        p.innerHTML = 'Campo vazio'
+
+        divBox.appendChild(p)
+
+        setTimeout(() => {
+            valorInput.classList.remove('alerta')
+            p.remove()
+        }, 2000)
+
         return;
     }
 
@@ -41,12 +60,14 @@ function carregarHTML() {
         })
     }
 
-    totalAnt.innerHTML = `Total: ${arrayAnotacao.length}` 
+    totalAnt.innerHTML = `Total: ${arrayAnotacao.length}`
 
-    if(arrayAnotacao.length === 0){
+    if (arrayAnotacao.length === 0) {
         totalAnt.style.display = 'none'
-        ApagarTodos.style.display = 'none' 
-        return;
+        ApagarTodos.style.display = 'none'
+    } else {
+        totalAnt.style.display = 'block'
+        ApagarTodos.style.display = 'block'
     }
 }
 
@@ -65,12 +86,7 @@ function removerAnt(e) {
     carregarHTML();
 }
 
-function deletarTodos(){
+function deletarTodos() {
     arrayAnotacao = [];
-    carregarHTML(); 
-
+    carregarHTML();
 }
-
-btnSalvar.addEventListener('click', addAnotacao)
-sessaoResultado.addEventListener('click', removerAnt)
-btn.addEventListener('click', deletarTodos)
