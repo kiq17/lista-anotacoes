@@ -4,6 +4,7 @@ const btnSalvar = document.getElementById('btn-save')
 const ApagarTodos = document.getElementById('btn')
 const divBox = document.querySelector('.input-box')
 const totalAnt = document.getElementById('total')
+const iconError = document.getElementById('error-icon')
 
 let arrayAnotacao = []
 
@@ -20,6 +21,7 @@ function addAnotacao() {
 
     if (anotacao === '') {
         valorInput.classList.add('alerta')
+        iconError.style.display = 'block'
         const p = document.createElement('p')
         p.classList.add('texto-error')
 
@@ -30,6 +32,7 @@ function addAnotacao() {
         setTimeout(() => {
             valorInput.classList.remove('alerta')
             p.remove()
+            iconError.style.display = 'none'
         }, 2000)
 
         return;

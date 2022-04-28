@@ -34,6 +34,7 @@ h1{
 .input-box{
     margin: 0 auto;
     width: 70%;
+    position: relative;
 }
 
 input{
@@ -41,15 +42,17 @@ input{
     margin: auto;
     padding: 5px;
     outline: none;
+    border: 1px solid rgb(122, 122, 122);
+    transition: .2s;
 }
 
 input:focus{
-    border: 2px solid rgb(77, 124, 255);
+    border: 1px solid rgb(77, 124, 255);
     box-shadow: 0px 0px 3px rgb(159, 184, 255);
 }
 
 input.alerta{
-    border: 2px solid red;
+    border: 1px solid red;
     box-shadow: 0px 0px 3px rgb(255, 88, 88);
     animation: shake 300ms;
 }
@@ -63,7 +66,7 @@ input.alerta{
 .texto-error{
     color: red;
     font-size: 12px;
-    margin: 10px;
+    margin: 10px 5px;
 }
 
 .resultado{
@@ -92,6 +95,15 @@ i{
 
 i:hover{
     color: red;
+}
+
+#error-icon{
+    color: red;
+    cursor: text;
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    display: none;
 }
 
 button{
